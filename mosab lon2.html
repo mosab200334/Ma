@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title> - تسجيل / إنشاء حساب</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+
+    * {
+      box-sizing: border-box;
+      font-family: 'Cairo', sans-serif;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #74ebd5, #9face6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      max-width: 400px;
+      padding: 40px 30px;
+      color: #fff;
+      animation: fadeIn 0.6s ease;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-weight: bold;
+      color: #ffffff;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 18px;
+      border: none;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.15);
+      color: #fff;
+      font-size: 15px;
+      transition: 0.3s;
+    }
+
+    input::placeholder {
+      color: #eee;
+    }
+
+    input:focus {
+      outline: 2px solid #fff;
+      background: rgba(255, 255, 255, 0.25);
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      background: #ffffff;
+      color: #4b79a1;
+      font-weight: bold;
+      font-size: 16px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background: #eee;
+    }
+
+    p {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 14px;
+    }
+
+    a {
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    .form-section {
+      display: none;
+    }
+
+    .form-section.active {
+      display: block;
+    }
+
+    @media (max-width: 480px) {
+      .card {
+        padding: 30px 20px;
+      }
+
+      h2 {
+        font-size: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <!-- تسجيل الدخول -->
+    <div id="loginForm" class="form-section active">
+      <h2>مرحباً بعودتك</h2>
+      <form>
+        <input type="text" placeholder="اسم المستخدم" required>
+        <input type="password" placeholder="كلمة المرور" required>
+        <button type="submit">تسجيل الدخول</button>
+        <p>ليس لديك حساب؟ <a onclick="switchForm('registerForm')">إنشاء حساب</a></p>
+      </form>
+    </div>
+
+    <!-- إنشاء حساب -->
+    <div id="registerForm" class="form-section">
+      <h2>إنشاء حساب جديد</h2>
+      <form>
+        <input type="text" placeholder="الاسم الكامل" required>
+        <input type="email" placeholder="البريد الإلكتروني" required>
+        <input type="text" placeholder="اسم المستخدم" required>
+        <input type="password" placeholder="كلمة المرور" required>
+        <button type="submit">تسجيل</button>
+        <p>هل لديك حساب؟ <a onclick="switchForm('loginForm')">تسجيل الدخول</a></p>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function switchForm(id) {
+      document.querySelectorAll('.form-section').forEach(f => f.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+  </script>
+
+</body>
+</html>
